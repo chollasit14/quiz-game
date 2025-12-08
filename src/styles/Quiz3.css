@@ -1,0 +1,350 @@
+/* Quiz3.css */
+.quiz3-container {
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+}
+
+.quiz3-content {
+  width: 100%;
+  max-width: 900px;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ✅ หน้ากติกา */
+.quiz3-rules {
+  text-align: center;
+}
+
+.quiz3-rules h1 {
+  color: #1e293b;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.rules-box {
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid #667eea;
+  text-align: left;
+}
+
+.rule-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.rule-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.rule-item:last-child {
+  margin-bottom: 0;
+}
+
+.rule-icon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.rule-text {
+  flex: 1;
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.btn-start-quiz3 {
+  width: 100%;
+  max-width: 300px;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-start-quiz3:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.quiz3-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.quiz3-header h2 {
+  color: #1e293b;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.quiz3-score-badge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.3rem 1.25rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.quiz3-question-box {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.quiz3-question {
+  font-size: 1.2rem;
+  color: #1e293b;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.quiz3-img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.5rem;
+}
+
+.quiz3-info {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+.quiz3-info strong {
+  color: #667eea;
+  font-size: 1.25rem;
+}
+
+.quiz3-result {
+  color: #1e293b;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.quiz3-result strong {
+  color: #10b981;
+  font-size: 1.5rem;
+}
+
+/* Grid ตัวเลข */
+.quiz3-numbers {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem; /* ✅ ลดจาก 1rem → 0.75rem */
+  margin-bottom: 2rem;
+  max-width: 600px; /* ✅ จำกัดความกว้างสูงสุด */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quiz3-number {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem; /* ✅ ลดจาก 1.5rem → 1.25rem */
+  font-weight: 700;
+  border-radius: 10px; /* ✅ ลดจาก 12px → 10px */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  border: 2px solid #e2e8f0;
+  color: #64748b;
+  padding: 0.5rem; /* ✅ เพิ่ม padding เล็กน้อย */
+}
+
+/* สถานะตัวเลข */
+.quiz3-number:hover {
+  border-color: #667eea;
+  transform: scale(1.05);
+}
+
+.quiz3-number.selected {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border-color: #3b82f6;
+  color: #1e40af;
+  font-weight: 700;
+}
+
+.quiz3-number.correct {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-color: #10b981;
+  color: #065f46;
+  animation: correctPulse 0.5s ease;
+  cursor: not-allowed;
+}
+
+.quiz3-number.wrong {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border-color: #ef4444;
+  color: #991b1b;
+  animation: wrongShake 0.5s ease;
+  cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes correctPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes wrongShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+/* ปุ่ม */
+.quiz3-actions {
+  text-align: center;
+}
+
+.btn-confirm,
+.btn-summary {
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0.5rem auto;
+  display: block;
+}
+
+.btn-confirm {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-confirm:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-confirm:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-summary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-summary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.quiz3-countdown {
+  color: #64748b;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .quiz3-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .quiz3-numbers {
+    grid-template-columns: repeat(5, 1fr); /* ✅ เก็บ 5 คอลัมน์ */
+    gap: 0.5rem; /* ✅ ลดจาก 0.75rem → 0.5rem */
+    max-width: 100%; /* ✅ ใช้เต็มความกว้าง */
+  }
+
+  .quiz3-number {
+    font-size: 1rem; /* ✅ ลดจาก 1.25rem → 1rem */
+    padding: 0.4rem;
+  }
+
+  .quiz3-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .quiz3-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .quiz3-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .quiz3-numbers {
+    grid-template-columns: repeat(5, 1fr); /* ✅ เก็บ 5 คอลัมน์ */
+    gap: 0.4rem; /* ✅ ลดจาก 0.5rem → 0.4rem */
+  }
+
+  .quiz3-number {
+    font-size: 0.9rem; /* ✅ ลดจาก 1.1rem → 0.9rem */
+    border-radius: 8px; /* ✅ ลดจาก 10px → 8px */
+    padding: 0.3rem;
+  }
+
+  .quiz3-question {
+    font-size: 1rem;
+  }
+
+  .btn-confirm,
+  .btn-summary {
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+}

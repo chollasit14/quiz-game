@@ -1,0 +1,373 @@
+/* src/styles/RewardPopup.css */
+
+.reward-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.reward-popup {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reward-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  /* border-radius: 50%; */
+  border: none;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.reward-close:hover {
+  background: #e2e8f0;
+  color: #334155;
+  transform: rotate(90deg);
+}
+
+.reward-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.reward-header h2 {
+  color: #1e293b;
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+.reward-image {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.reward-image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.reward-image-note {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.reward-score-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.reward-score-section h3 {
+  color: #475569;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.reward-max-score {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.reward-max-score strong {
+  color: #667eea;
+  font-size: 1.25rem;
+}
+
+.reward-result {
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  animation: bounceIn 0.5s ease;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.reward-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.reward-user-score {
+  font-size: 1.25rem;
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+
+.reward-user-score strong {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.reward-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.reward-message {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* สี tier ต่างๆ */
+.tier-reward {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border: 2px solid #10b981;
+}
+
+.tier-reward .reward-title {
+  color: #065f46;
+}
+
+.tier-reward .reward-message {
+  color: #047857;
+}
+
+.tier-good {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border: 2px solid #3b82f6;
+}
+
+.tier-good .reward-title {
+  color: #1e40af;
+}
+
+.tier-good .reward-message {
+  color: #1d4ed8;
+}
+
+.tier-medium {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 2px solid #f59e0b;
+}
+
+.tier-medium .reward-title {
+  color: #92400e;
+}
+
+.tier-medium .reward-message {
+  color: #b45309;
+}
+
+.tier-fair {
+  background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+  border: 2px solid #f97316;
+}
+
+.tier-fair .reward-title {
+  color: #7c2d12;
+}
+
+.tier-fair .reward-message {
+  color: #9a3412;
+}
+
+.tier-poor {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border: 2px solid #ef4444;
+}
+
+.tier-poor .reward-title {
+  color: #991b1b;
+}
+
+.tier-poor .reward-message {
+  color: #b91c1c;
+}
+
+.reward-criteria {
+  margin-bottom: 1.5rem;
+}
+
+.reward-criteria h3 {
+  color: #475569;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.reward-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.reward-table thead {
+  background: #f1f5f9;
+}
+
+.reward-table th {
+  padding: 0.75rem;
+  text-align: left;
+  color: #475569;
+  font-weight: 600;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.reward-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #64748b;
+}
+
+.reward-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.reward-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.reward-table tbody tr.highlight {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  font-weight: 600;
+  color: #92400e;
+}
+
+.reward-actions {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.reward-btn-close {
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.reward-btn-close:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reward-popup {
+    padding: 1.5rem;
+    max-height: 95vh;
+  }
+
+  .reward-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .reward-icon {
+    font-size: 2.5rem;
+  }
+
+  .reward-user-score strong {
+    font-size: 1.75rem;
+  }
+
+  .reward-title {
+    font-size: 1.25rem;
+  }
+
+  .reward-message {
+    font-size: 0.9rem;
+  }
+
+  .reward-table {
+    font-size: 0.85rem;
+  }
+
+  .reward-table th,
+  .reward-table td {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reward-popup {
+    padding: 1rem;
+  }
+
+  .reward-close {
+    width: 32px;
+    height: 32px;
+    font-size: 1.25rem;
+  }
+
+  .reward-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .reward-score-section h3 {
+    font-size: 1rem;
+  }
+}

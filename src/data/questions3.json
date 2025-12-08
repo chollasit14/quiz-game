@@ -1,0 +1,8 @@
+
+{
+  "question": "จากภาพนี้ กรุณาเลือกตัวเลขที่คิดว่าเป็นจุดเสี่ยง (เลือก 10 คำตอบ)",
+  "image": "https://picsum.photos/id/1015/600/400",
+  "totalChoices": 15,
+  "correctAnswers": [1, 3, 5, 7, 9, 11, 13, 15, 2, 4],
+  "maxSelections": 10
+}
