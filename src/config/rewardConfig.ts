@@ -16,8 +16,8 @@ export const REWARD_CONFIG = {
   
   // จำนวนภารกิจทั้งหมด
   TOTAL_MISSIONS: 3,
-  MISSION_1: 7, 
-  MISSION_2: 5,
+  MISSION_1: 5, 
+  MISSION_2: 7,
   MISSION_3: 10,
   // คะแนนเต็มรวม
   get MAX_SCORE() {
