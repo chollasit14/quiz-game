@@ -115,3 +115,29 @@ h2 {
     font-size: 1.25rem;
   }
 }
+
+/* @font-face {
+  font-family: 'KMBalance';
+  src: url('/fonts/KMBalanceDemo.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LayijiSarangheyo';
+  src: url('/fonts/LayijiSarangheyo.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Waffle';
+  src: url('/fonts/Waffle Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PGBobby';
+  src: url('/fonts/PGBobby.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-size: large;
+} */

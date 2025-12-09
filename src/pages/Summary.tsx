@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Summary.css";
-import t01 from "../assets/img/t01.png";
+import t01 from "/images/sum1.webp";
 
 export default function Summary() {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ export default function Summary() {
   // ✅ เพิ่ม flag บอกว่ามาจากหน้า Quiz หรือไม่
   const [quizCompleted] = useState(() => localStorage.getItem("quizCompleted") === "true");
 
-  const [countdown, setCountdown] = useState(3);
+  const [countdown, setCountdown] = useState(4);
   const [buttonEnabled, setButtonEnabled] = useState(false);
 
   // 🔽 เพิ่มใน useEffect ใหม่
@@ -67,15 +67,25 @@ export default function Summary() {
     };
   }, []);
 
+  // ✅ คะแนนเต็มของแต่ละภารกิจ
+  const getTotalScore = (missionId: string): number => {
+    const totals: Record<string, number> = {
+      "1": 5,   // ภารกิจที่ 1: 5 คะแนน
+      "2": 7,   // ภารกิจที่ 2: 7 คะแนน
+      "3": 10,  // ภารกิจที่ 3: 10 คะแนน
+    };
+    return totals[missionId] || 5; // default = 5
+  };
+
   // คำนวณเปอร์เซ็นต์คะแนน
-  const totalQuestions = 5;
+  const totalQuestions = getTotalScore(mission); // ✅ ดึงคะแนนเต็มตามภารกิจ
   const scoreNum = parseInt(score);
   const percentage = (scoreNum / totalQuestions) * 100;
 
   // badge
   let badgeClass = "badge-poor";
   let badgeText = "ลองใหม่นะ!";
-  let icon = "😔";
+  let icon = "🔍";
 
   if (percentage === 100) {
     badgeClass = "badge-excellent";
@@ -128,7 +138,7 @@ export default function Summary() {
 
         const result = await response.json();
         console.log("✅ Score submitted:", result);
-        localStorage.removeItem("quizState");
+        
         // ✅ ลบ cache หลังบันทึกสำเร็จ เพื่อให้หน้า Mission โหลดข้อมูลใหม่
         const cacheKey = `mission_cache_${employeeId}`;
         localStorage.removeItem(cacheKey);

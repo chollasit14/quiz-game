@@ -22,6 +22,10 @@
   margin-bottom: 2.5rem;
 }
 
+.login-title {
+  font-family: 'LayijiSarangheyo', sans-serif;
+}
+
 .login-header h1 {
   color: #1e293b;
   font-size: 2rem;
@@ -183,3 +187,4 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+

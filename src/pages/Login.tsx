@@ -94,7 +94,7 @@ export default function Login() {
       <div className="login-box">
         <div className="login-header">
           <div className="login-icon">👀</div>
-          <h1>ภารกิจลับจับจุดเสี่ยง</h1>
+          <h1 className="">ภารกิจลับจับจุดเสี่ยง</h1>
           <p>กรุณากรอกรหัสพนักงานเพื่อเข้าร่วมกิจกรรม</p>
         </div>
 
@@ -119,7 +119,7 @@ export default function Login() {
             onClick={checkEmployee}
             disabled={loading}
           >
-            {loading ? "" : "ล็อกอิน"}
+            {loading ? "" : "เข้าสู่ระบบ"}
           </button>
         </div>
 

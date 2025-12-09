@@ -72,10 +72,9 @@ export default function RewardPopup({
         {showScoreResult && (
           <div className={`reward-result ${tier.className}`}>
             <div className="reward-icon">{tier.icon}</div>
-            <div className="reward-user-score">
-              คะแนนสะสมของสายลับ "{employeeName}"
-            </div>
-            <div className="reward-user-score"><strong>{totalScore}</strong> คะแนน</div>
+            <div className="reward-user-score">คะแนนสะสมของสายลับ</div>
+            <div className="reward-user-score">"{employeeName}"</div>
+            <div className="reward-user-score"><strong>{totalScore} คะแนน</strong></div>
             <div className="reward-title">{tier.title}</div>
             <div className="reward-message">{tier.message}</div>
           </div>

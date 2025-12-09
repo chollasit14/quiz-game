@@ -74,10 +74,25 @@
   margin-right: 1rem;
 }
 
+.rule-icon-ex {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 200;
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
 .rule-text {
   flex: 1;
   color: #475569;
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.6;
   text-align: left;
 }
@@ -126,15 +141,14 @@
     padding: 0.875rem;
   }
 
-  .rule-icon {
+  .rule-icon{
     width: 32px;
     height: 32px;
     min-width: 32px;
     font-size: 0.9rem;
   }
-
   .rule-text {
-    font-size: 0.95rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -173,7 +187,7 @@
   }
 
   .rule-text {
-    text-align: center;
+    text-align: left;
   }
 
   .rule-img {
