@@ -38,8 +38,8 @@ export default function Rules() {
           </div>
 
           <div className="rule-item">
-            <div className="rule-icon-ex">*</div>
-            <div className="rule-text">สายลับต้องทำครบทั้ง 3 ภารกิจเท่านั้นจึงจะมีสิทธิ์รับรางวัลใหญ่</div>
+            <div className="rule-icon-ex heavy">*</div>
+            <div className="rule-text heavy">สายลับต้องทำครบทั้ง 3 ภารกิจเท่านั้นจึงจะมีสิทธิ์รับรางวัลใหญ่</div>
           </div>
         </div>
 

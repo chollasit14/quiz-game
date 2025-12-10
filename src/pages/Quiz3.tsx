@@ -151,8 +151,8 @@ export default function Quiz3() {
                 <div className="rule-text">คะแนนของคุณจะขึ้นอยู่กับจำนวนจุดเสี่ยงที่คุณเลือกได้ถูกต้อง</div>
               </div>
               <div className="rule-item">
-                <div className="rule-icon-ex">*</div>
-                <div className="rule-text">สายลับต้องทำครบทั้ง 3 ภารกิจเท่านั้นจึงจะมีสิทธิ์รับรางวัลใหญ่</div>
+                <div className="rule-icon-ex heavy">*</div>
+                <div className="rule-text heavy">สายลับต้องทำครบทั้ง 3 ภารกิจเท่านั้นจึงจะมีสิทธิ์รับรางวัลใหญ่</div>
               </div>
             </div>
             <button className="btn-start-quiz3" onClick={() => setShowRules(false)}>

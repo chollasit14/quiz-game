@@ -136,6 +136,49 @@
   animation: bounceIn 0.5s ease;
 }
 
+.reward-benefit-section {
+  margin: 1rem 0;
+}
+
+.benefit-title {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: #334155;
+  padding-bottom: 0.4rem;
+  border-bottom: 1.5px solid #e2e8f0;
+}
+
+.benefit-card {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  margin-bottom: 0.7rem;
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+  border-left: 4px solid #667eea;
+  border-right: 2px solid #667eea;
+  border-top: 1px solid #667eea;
+  border-bottom: 1px solid #667eea;
+}
+
+.benefit-number {
+  font-weight: 700;
+  font-size: 0.85rem;
+  min-width: 60px;
+  color: #4f46e5;
+}
+
+.benefit-text {
+  flex: 1;
+  font-size: 0.82rem;
+  color: #475569;
+  line-height: 1.35;
+}
+
 @keyframes bounceIn {
   0% {
     opacity: 0;
@@ -369,5 +412,18 @@
 
   .reward-score-section h3 {
     font-size: 1rem;
+  }
+  .benefit-card {
+    flex-direction: column;
+    padding: 0.6rem 0.7rem;
+  }
+
+  .benefit-number {
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .benefit-text {
+    font-size: 0.78rem;
   }
 }
