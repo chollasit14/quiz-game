@@ -186,7 +186,7 @@ export default function Summary() {
 
         <div className="summary-footer">
           <p>ขอบคุณที่เข้าร่วมกิจกรรม!</p>
-          <p>โปรด Capture หน้าจอเพื่อใช้เป็นหลักฐานในการรับรางวัล</p>
+          <p>ทีมวิชาการ</p>
         </div>
       </div>
     </div>
