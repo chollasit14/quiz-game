@@ -8,7 +8,7 @@ const MISSIONS = [
   {
     id: 1,
     name: "ภารกิจที่ 1: จับจุดเสี่ยงพื้นฐาน (Basic Scan)",
-    startDate: new Date("2025-12-01T00:00:00"),
+    startDate: new Date("2025-12-10T00:00:00"),
     endDate: new Date("2025-12-19T23:59:59"),
     icon: "🔍",
     color: "mission-1"
@@ -16,16 +16,16 @@ const MISSIONS = [
   {
     id: 2,
     name: "ภารกิจที่ 2: ตรวจจับความเสี่ยงขั้นสูง (Advanced Detection)",
-    startDate: new Date("2025-12-01T00:00:00"),
-    endDate: new Date("2025-12-26T23:59:59"),
+    startDate: new Date("2026-01-12T00:00:00"),
+    endDate: new Date("2026-01-16T23:59:59"),
     icon: "🎯",
     color: "mission-2"
   },
   {
     id: 3,
     name: "ภารกิจที่ 3: ทำลายความเสี่ยงสุดขีด (Ultimate Challenge)",
-    startDate: new Date("2025-12-01T00:00:00"),
-    endDate: new Date("2026-01-02T23:59:59"),
+    startDate: new Date("2026-02-09T00:00:00"),
+    endDate: new Date("2026-02-13T23:59:59"),
     icon: "🏆",
     color: "mission-3"
   }

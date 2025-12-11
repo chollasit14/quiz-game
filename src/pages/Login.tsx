@@ -56,6 +56,9 @@ export default function Login() {
       }
 
       const fullName = `${empData.name}`; // ${empData.lastname}
+      // const fname = `${empData.name}`;
+      // const lname = `${empData.lastname}`;
+      // const department = `${empData.department}`;
 
       // 2) ตรวจว่าทำแบบทดสอบไปแล้วหรือยัง
       // const checkUrl = `https://script.google.com/macros/s/AKfycbyHtLaTThhM5nYbEXzvCxLXtrpOEfb-h_KOdcl0b3iHU8ao8lsMYr15yS-J6leqAOYP/exec?employeeId=${employeeId}`;
