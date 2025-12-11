@@ -228,7 +228,7 @@
 
 @media (max-width: 480px) {
   .quiz-container {
-    height: 100vh;
+    min-height: 100vh;
     padding: 0;
   }
 
