@@ -86,6 +86,11 @@ export default function RewardPopup({
               เล่นเกมให้ครบทั้ง 3 ภารกิจ สะสมคะแนนลุ้นรับรางวัลใหญ่ไปเลย!
             </div>
           </div>
+
+          <div className="benefit-card">
+            <div className="benefit-number">คำเตือน</div>
+            <div className="benefit-text"><strong>หากเล่นไม่ครบ 3 ภารกิจ แม้คะแนนถึงเกณฑ์ก็จะไม่มีสิทธิ์ได้รางวัลใหญ่</strong></div>
+          </div>
         </div>
 
         {/* แสดงผลคะแนนของผู้ใช้ (ถ้ามี) */}

@@ -284,8 +284,8 @@ export default function Mission() {
           isOpen={isRewardOpen}
           onClose={() => setRewardOpen(false)}
           totalScore={totalScore}
-          // showScoreResult={completedMissions.length === 3}
-          showScoreResult={true}
+          showScoreResult={completedMissions.length === 3}
+          // showScoreResult={true}
         />
       </div>
     </div>
