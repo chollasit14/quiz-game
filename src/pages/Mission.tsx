@@ -17,7 +17,7 @@ const MISSIONS = [
     id: 2,
     name: "ภารกิจที่ 2: ตรวจจับความเสี่ยงขั้นสูง (Advanced Detection)",
     // startDate: new Date("2026-01-12T00:00:00"),
-    startDate: new Date("2025-01-12T00:00:00"),
+    startDate: new Date("2026-01-12T00:00:00"),
     endDate: new Date("2026-01-16T23:59:59"),
     icon: "🎯",
     color: "mission-2"
@@ -26,7 +26,7 @@ const MISSIONS = [
     id: 3,
     name: "ภารกิจที่ 3: ทำลายความเสี่ยงสุดขีด (Ultimate Challenge)",
     // startDate: new Date("2026-02-09T00:00:00"),
-    startDate: new Date("2025-02-09T00:00:00"),
+    startDate: new Date("2026-02-09T00:00:00"),
     endDate: new Date("2026-02-13T23:59:59"),
     icon: "🏆",
     color: "mission-3"
