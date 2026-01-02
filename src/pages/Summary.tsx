@@ -121,11 +121,11 @@ export default function Summary() {
       }
 
       try {
-        console.log("📤 Submitting score:", {
-          employeeId,
-          score,
-          mission,
-        });
+        // console.log("📤 Submitting score:", {
+        //   employeeId,
+        //   score,
+        //   mission,
+        // });
 
         const response = await fetch(import.meta.env.VITE_QUIZ_HISTORY_URL, {
           method: "POST",

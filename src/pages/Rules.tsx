@@ -5,8 +5,8 @@ import "../styles/Rules.css";
 export default function Rules() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { employeeName, missionId, missionName } = location.state || {};
-  console.log(missionId, missionName, employeeName);
+  const { missionId, missionName } = location.state || {};
+  // console.log(missionId, missionName, employeeName); employeeName,
   return (
     <div className="rules-container">
       <div className="rules-content">

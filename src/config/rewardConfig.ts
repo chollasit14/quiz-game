@@ -36,7 +36,7 @@ export const REWARD_CONFIG = {
       icon: "🏆"
     },
     {
-      minScore: 17,
+      minScore: 20,
       maxScore: 21,
       title: "ยอดเยี่ยม",
       message: "รางวัลที่ 2 : 300 บาท",
@@ -44,8 +44,8 @@ export const REWARD_CONFIG = {
       icon: "👍"
     },
     {
-      minScore: 15,
-      maxScore: 16,
+      minScore: 18,
+      maxScore: 19,
       title: "ดีเยี่ยม",
       message: "รางวัลที่ 3 : 100 บาท",
       className: "tier-medium",
@@ -53,7 +53,7 @@ export const REWARD_CONFIG = {
     },
     {
       minScore: 8,
-      maxScore: 14,
+      maxScore: 17,
       title: "พอใช้",
       message: "พยายามต่อไป! เกือบได้รางวัลแล้ว",
       className: "tier-fair",

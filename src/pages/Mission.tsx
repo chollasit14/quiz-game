@@ -71,14 +71,14 @@ export default function Mission() {
           const age = Date.now() - timestamp;
 
           if (age < CACHE_DURATION) {
-            console.log("✅ Using cached data (age:", Math.floor(age / 1000), "seconds)");
+            // console.log("✅ Using cached data (age:", Math.floor(age / 1000), "seconds)");
             setCompletedMissions(data.completed);
             setMissionScores(data.scores);
             setTotalScore(data.total);
             setLoading(false);
             return; // ใช้ cache ไม่ต้อง fetch
           } else {
-            console.log("⏰ Cache expired, fetching new data");
+            // console.log("⏰ Cache expired, fetching new data");
           }
         } catch (e) {
           console.warn("⚠️ Cache parse error:", e);
@@ -124,7 +124,7 @@ export default function Mission() {
         setMissionScores(scores);
         setTotalScore(total);
 
-        console.log("✅ Data fetched and cached");
+        // console.log("✅ Data fetched and cached");
       } catch (err) {
         console.error("❌ Fetch error:", err);
       }
