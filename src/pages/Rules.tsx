@@ -29,7 +29,7 @@ export default function Rules() {
 
           <div className="rule-item">
             <div className="rule-icon">2</div>
-            <div className="rule-text">เมื่อสายลับเลือกคำตอบ ระบบจะทำการตรวจสอบและเฉลยโดยทันที ไม่สามารถแก้ไขได้</div>
+            <div className="rule-text">สายลับสามารถเลือกคำตอบที่ถูกต้องที่สุดได้เพียง 1 ข้อเท่านั้น</div>
           </div>
 
           <div className="rule-item">
