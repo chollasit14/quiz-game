@@ -15,8 +15,7 @@ interface Question {
 
 interface SavedAnswer {
   choice: string;
-  correct: boolean;
-  answered: boolean;
+  submitted: boolean;
 }
 
 interface QuizState {
@@ -48,60 +47,46 @@ export default function Quiz() {
   const currentMission = localStorage.getItem("currentMission") || "1";
   const totalQuestions = QUESTIONS_MAP[currentMission].length;
 
-  // โหลดสถานะเก่า
+  // โหลด state
   const savedRaw = localStorage.getItem("quizState");
   const savedState: QuizState | null = savedRaw ? JSON.parse(savedRaw) : null;
 
-  // Questions (สุ่มครั้งเดียว, หรือโหลดจาก localStorage)
+  // questions (สุ่มครั้งเดียว)
   const [questions] = useState<Question[]>(() => {
     if (savedState?.questions) return savedState.questions;
     return shuffle(QUESTIONS_MAP[currentMission]);
   });
 
-  // Index
   const [index, setIndex] = useState<number>(savedState?.index ?? 0);
-
-  // Score
   const [correctCount, setCorrectCount] = useState<number>(
     savedState?.score ?? 0
   );
 
-  // โหลดสถานะของข้อปัจจุบัน
-  const savedAnswer = savedState?.answers?.[questions[index].id] ?? null;
-
-  const [answered, setAnswered] = useState<boolean>(savedAnswer?.answered ?? false);
-  const [selected, setSelected] = useState<string>(savedAnswer?.choice ?? "");
-
   const q = questions[index];
+  const savedAnswer = savedState?.answers?.[q.id];
+
+  const [selected, setSelected] = useState<string>(
+    savedAnswer?.choice ?? ""
+  );
+
   const progress = ((index + 1) / totalQuestions) * 100;
 
   // -----------------------------
-  // 🎯 เลือกคำตอบ (เฉลยทันที + บันทึก localStorage ทันที)
+  // 🎯 เลือกคำตอบ (ยังเปลี่ยนได้)
   // -----------------------------
   const choose = (choice: string) => {
-    if (answered) return;
-
-    const isCorrect = choice === q.answer;
-
     setSelected(choice);
-    setAnswered(true);
 
-    // อัปเดตคะแนน
-    const newScore = isCorrect ? correctCount + 1 : correctCount;
-    setCorrectCount(newScore);
-
-    // บันทึกสถานะใหม่
     const updatedState: QuizState = {
       mission: currentMission,
       index,
-      score: newScore,
+      score: correctCount,
       questions,
       answers: {
         ...(savedState?.answers || {}),
         [q.id]: {
           choice,
-          correct: isCorrect,
-          answered: true,
+          submitted: false,
         },
       },
     };
@@ -110,11 +95,29 @@ export default function Quiz() {
   };
 
   // -----------------------------
-  // 🎯 ข้อถัดไป
+  // 🎯 ข้อถัดไป (ตรวจคำตอบตรงนี้)
   // -----------------------------
   const next = () => {
+    if (!selected) return; // กันกดข้ามโดยไม่เลือก
+
+    let newScore = correctCount;
+
+    // ตรวจคำตอบตอน submit เท่านั้น
+    if (selected === q.answer) {
+      newScore += 1;
+      setCorrectCount(newScore);
+    }
+
+    const updatedAnswers = {
+      ...(savedState?.answers || {}),
+      [q.id]: {
+        choice: selected,
+        submitted: true,
+      },
+    };
+
     if (index === totalQuestions - 1) {
-      localStorage.setItem("score", correctCount.toString());
+      localStorage.setItem("score", newScore.toString());
       localStorage.setItem("quizCompleted", "true");
       localStorage.removeItem("quizState");
       navigate("/summary", { replace: true });
@@ -122,20 +125,17 @@ export default function Quiz() {
     }
 
     const newIndex = index + 1;
-
-    const nextSaved = savedState?.answers?.[questions[newIndex].id];
+    const nextSaved = updatedAnswers[questions[newIndex].id];
 
     setIndex(newIndex);
     setSelected(nextSaved?.choice ?? "");
-    setAnswered(nextSaved?.answered ?? false);
 
-    // อัปเดตสถานะ index ใน localStorage
     const updatedState: QuizState = {
       mission: currentMission,
       index: newIndex,
-      score: correctCount,
+      score: newScore,
       questions,
-      answers: savedState?.answers ?? {},
+      answers: updatedAnswers,
     };
 
     localStorage.setItem("quizState", JSON.stringify(updatedState));
@@ -158,7 +158,7 @@ export default function Quiz() {
           </div>
 
           <div className="quiz-score">
-            <div className="score-badge">คะแนน: {correctCount}</div>
+            {/* <div className="score-badge">คะแนน: {correctCount}</div> */}
           </div>
         </div>
 
@@ -170,12 +170,7 @@ export default function Quiz() {
         <div className="choices">
           {q.choices.map((c) => {
             let className = "choice";
-
-            if (answered) {
-              if (c === q.answer) className += " correct";
-              else if (c === selected) className += " wrong";
-              className += " disabled";
-            }
+            if (c === selected) className += " selected";
 
             return (
               <div
@@ -189,13 +184,15 @@ export default function Quiz() {
           })}
         </div>
 
-        {answered && (
-          <div className="quiz-actions">
-            <button className="btn-next" onClick={next}>
-              {index === totalQuestions - 1 ? "ดูผลคะแนน" : "ข้อถัดไป"}
-            </button>
-          </div>
-        )}
+        <div className="quiz-actions">
+          <button
+            className="btn-next"
+            onClick={next}
+            disabled={!selected}
+          >
+            {index === totalQuestions - 1 ? "ดูผลคะแนน" : "ข้อถัดไป"}
+          </button>
+        </div>
       </div>
     </div>
   );
