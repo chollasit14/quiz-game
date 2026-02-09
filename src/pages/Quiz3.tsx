@@ -1,5 +1,5 @@
 // Quiz3.tsx - ภารกิจที่ 3
-import { useState, useEffect, useCallback } from "react"; // ✅ เพิ่ม useCallback
+import { useState, useEffect } from "react"; //useCallback
 import { useNavigate } from "react-router-dom";
 import question3Data from "../data/questions3.json";
 import "../styles/Quiz3.css";
@@ -26,7 +26,7 @@ export default function Quiz3() {
     }
   })();
 
-  const [showRules, setShowRules] = useState(!savedState); // ✅ ถ้ามี savedState ไม่แสดงกติกา
+  const [showRules, setShowRules] = useState(!savedState);
   const [selectedNumbers, setSelectedNumbers] = useState<number[]>(
     savedState?.selectedNumbers || []
   );
@@ -34,7 +34,6 @@ export default function Quiz3() {
     savedState?.isConfirmed || false
   );
   const [score, setScore] = useState<number>(savedState?.score || 0);
-  const [countdown, setCountdown] = useState<number>(10);
 
   // ป้องกันปุ่ม Back
   useEffect(() => {
@@ -46,35 +45,22 @@ export default function Quiz3() {
     return () => window.removeEventListener("popstate", handleBack);
   }, []);
 
-  // ✅ ใช้ useCallback เพื่อป้องกัน dependency warning
-  const goToSummary = useCallback(() => {
-    localStorage.setItem("score", score.toString());
-    localStorage.setItem("quizCompleted", "true");
-    localStorage.removeItem("quizState3");
-    navigate("/summary", { replace: true });
-  }, [score, navigate]);
-
-  // นับถอยหลังหลังยืนยันคำตอบ
-  useEffect(() => {
-    if (isConfirmed && countdown > 0) {
-      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
-      return () => clearTimeout(timer);
-    } else if (isConfirmed && countdown === 0) {
-      goToSummary();
-    }
-  }, [isConfirmed, countdown, goToSummary]); // ✅ เพิ่ม goToSummary
+  // const goToSummary = useCallback(() => {
+  //   localStorage.setItem("score", score.toString());
+  //   localStorage.setItem("quizCompleted", "true");
+  //   localStorage.removeItem("quizState3");
+  //   navigate("/summary", { replace: true });
+  // }, [score, navigate]);
 
   // เลือกตัวเลข
   const toggleNumber = (num: number) => {
-    if (isConfirmed) return; // ล็อกหลังยืนยัน
+    if (isConfirmed) return;
 
     if (selectedNumbers.includes(num)) {
-      // ยกเลิกการเลือก
       const newSelected = selectedNumbers.filter((n) => n !== num);
       setSelectedNumbers(newSelected);
       saveState(newSelected, false, 0);
     } else {
-      // เลือกใหม่ (ไม่เกิน 10)
       if (selectedNumbers.length < data.maxSelections) {
         const newSelected = [...selectedNumbers, num];
         setSelectedNumbers(newSelected);
@@ -84,7 +70,11 @@ export default function Quiz3() {
   };
 
   // บันทึก state
-  const saveState = (selected: number[], confirmed: boolean, calcScore: number) => {
+  const saveState = (
+    selected: number[],
+    confirmed: boolean,
+    calcScore: number
+  ) => {
     localStorage.setItem(
       "quizState3",
       JSON.stringify({
@@ -95,14 +85,13 @@ export default function Quiz3() {
     );
   };
 
-  // ยืนยันคำตอบ
+  // ยืนยันคำตอบ → คำนวณคะแนนแล้วไป summary ทันที
   const confirmAnswer = () => {
     if (selectedNumbers.length !== data.maxSelections) {
       alert(`กรุณาเลือกให้ครบ ${data.maxSelections} ตัว`);
       return;
     }
 
-    // คำนวณคะแนน
     const correctCount = selectedNumbers.filter((num) =>
       data.correctAnswers.includes(num)
     ).length;
@@ -110,22 +99,20 @@ export default function Quiz3() {
     setIsConfirmed(true);
     setScore(correctCount);
     saveState(selectedNumbers, true, correctCount);
+
+    // ไปหน้า summary ทันที (ไม่เฉลย ไม่ countdown)
+    localStorage.setItem("score", correctCount.toString());
+    localStorage.setItem("quizCompleted", "true");
+    localStorage.removeItem("quizState3");
+    navigate("/summary", { replace: true });
   };
 
-  // สถานะตัวเลข
+  // สถานะตัวเลข (ไม่ต้องมี correct/wrong แล้ว)
   const getNumberStatus = (num: number) => {
-    if (!isConfirmed) {
-      return selectedNumbers.includes(num) ? "selected" : "";
-    }
-
-    // หลังยืนยัน
-    if (!selectedNumbers.includes(num)) return ""; // ไม่ได้เลือก → สีขาว
-
-    const isCorrect = data.correctAnswers.includes(num);
-    return isCorrect ? "correct" : "wrong";
+    return selectedNumbers.includes(num) ? "selected" : "";
   };
 
-  // ✅ แสดงหน้ากติกาก่อน
+  // แสดงหน้ากติกาก่อน
   if (showRules) {
     return (
       <div className="quiz3-container">
@@ -136,26 +123,39 @@ export default function Quiz3() {
             <div className="rules-box">
               <div className="rule-item">
                 <div className="rule-icon">1</div>
-                <div className="rule-text">ในภาพจะมี 15 หมายเลขซ่อนจุดเสี่ยงไว้ มี 10 จุดเสี่ยงที่เป็นจุดเสี่ยงที่ถูกต้อง</div>
+                <div className="rule-text">
+                  ในภาพจะมี 15 หมายเลขซ่อนจุดเสี่ยงไว้ มี 10 จุดเสี่ยงที่เป็นจุดเสี่ยงที่ถูกต้อง
+                </div>
               </div>
               <div className="rule-item">
                 <div className="rule-icon">2</div>
-                <div className="rule-text">เลือกให้ครบ 10 จุดเสี่ยง ที่คุณคิดว่า "ใช่ที่สุด"</div>
+                <div className="rule-text">
+                  เลือกให้ครบ 10 จุดเสี่ยง ที่คุณคิดว่า "ใช่ที่สุด"
+                </div>
               </div>
               <div className="rule-item">
                 <div className="rule-icon">3</div>
-                <div className="rule-text">เมื่อกดยืนยันคำตอบ จะทำการเฉลยทันที</div>
+                <div className="rule-text">
+                  เมื่อกดยืนยันคำตอบ ระบบจะสรุปคะแนนทันที
+                </div>
               </div>
               <div className="rule-item">
                 <div className="rule-icon">4</div>
-                <div className="rule-text">คะแนนของคุณจะขึ้นอยู่กับจำนวนจุดเสี่ยงที่คุณเลือกได้ถูกต้อง</div>
+                <div className="rule-text">
+                  คะแนนของคุณจะขึ้นอยู่กับจำนวนจุดเสี่ยงที่คุณเลือกได้ถูกต้อง
+                </div>
               </div>
               <div className="rule-item">
                 <div className="rule-icon-ex heavy">*</div>
-                <div className="rule-text heavy">สายลับต้องทำครบทั้ง 3 ภารกิจเท่านั้นจึงจะมีสิทธิ์รับรางวัลใหญ่</div>
+                <div className="rule-text heavy">
+                  สายลับต้องทำครบทั้ง 3 ภารกิจเท่านั้นจึงจะมีสิทธิ์รับรางวัลใหญ่
+                </div>
               </div>
             </div>
-            <button className="btn-start-quiz3" onClick={() => setShowRules(false)}>
+            <button
+              className="btn-start-quiz3"
+              onClick={() => setShowRules(false)}
+            >
               เริ่มเกม
             </button>
           </div>
@@ -181,52 +181,38 @@ export default function Quiz3() {
 
         {/* ตัวเลือก */}
         <div className="quiz3-info">
-          {!isConfirmed ? (
-            <p>
-              เลือกแล้ว: <strong>{selectedNumbers.length}</strong> / {data.maxSelections}
-            </p>
-          ) : (
-            <p className="quiz3-result">
-              คะแนนที่ได้: <strong>{score}</strong> / {data.maxSelections}
-            </p>
-          )}
+          <p>
+            เลือกแล้ว: <strong>{selectedNumbers.length}</strong> /{" "}
+            {data.maxSelections}
+          </p>
         </div>
 
         <div className="quiz3-numbers">
-          {Array.from({ length: data.totalChoices }, (_, i) => i + 1).map((num) => {
-            const status = getNumberStatus(num);
-            return (
-              <div
-                key={num}
-                className={`quiz3-number ${status}`}
-                onClick={() => toggleNumber(num)}
-              >
-                {num}
-              </div>
-            );
-          })}
+          {Array.from({ length: data.totalChoices }, (_, i) => i + 1).map(
+            (num) => {
+              const status = getNumberStatus(num);
+              return (
+                <div
+                  key={num}
+                  className={`quiz3-number ${status}`}
+                  onClick={() => toggleNumber(num)}
+                >
+                  {num}
+                </div>
+              );
+            }
+          )}
         </div>
 
         {/* ปุ่ม */}
         <div className="quiz3-actions">
-          {!isConfirmed ? (
-            <button
-              className="btn-confirm"
-              onClick={confirmAnswer}
-              disabled={selectedNumbers.length !== data.maxSelections}
-            >
-              ยืนยันคำตอบ ({selectedNumbers.length}/{data.maxSelections})
-            </button>
-          ) : (
-            <>
-              <p className="quiz3-countdown">
-                ไปหน้าสรุปอัตโนมัติใน {countdown} วินาที...
-              </p>
-              <button className="btn-summary" onClick={goToSummary}>
-                ไปหน้าสรุปคะแนน
-              </button>
-            </>
-          )}
+          <button
+            className="btn-confirm"
+            onClick={confirmAnswer}
+            disabled={selectedNumbers.length !== data.maxSelections}
+          >
+            ยืนยันคำตอบ ({selectedNumbers.length}/{data.maxSelections})
+          </button>
         </div>
       </div>
     </div>

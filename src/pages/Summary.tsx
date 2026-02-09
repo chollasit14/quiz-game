@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Summary.css";
-import t01 from "/images/sum1.webp";
+import t01 from "/images/sum2.webp";
 
 export default function Summary() {
   const navigate = useNavigate();
